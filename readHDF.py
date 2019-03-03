@@ -67,18 +67,12 @@ class FY4A_H5(object):
                 self.c = rint(self.c).astype(np.uint16)
             # DISK全圆盘数据和REGC中国区域数据区别在起始行号和终止行号
             channel = self.h5file[NOMChannelname].value[self.l - self.l_begin, self.c]
-            #暂时处理
-            channel[channel == 65534] = 4095
-            channel[channel == 65535] = 4095
 #edit by songmingming htht 2019/03/03
-#            channel[channel == 65534] = 4096
-#             channel[channel == 65535] = 4096
-#             CALChannel = self.h5file[CALChannelname].value  # 定标表
-#             CALChannel = np.append(CALChannel, 65535) 
-#             self.channelsValues.append(CALChannel[channel])
-#             self.channelsValues = np.asarray(self.channelsValues)
-#edit by songmingming htht  2019/03/03
+           channel[channel == 65534] = 4096
+            channel[channel == 65535] = 4096
             CALChannel = self.h5file[CALChannelname].value  # 定标表
-            # self.channels[channelname] = CALChannel[channel]  # 缺测值
+            CALChannel = np.append(CALChannel, 65535) 
             self.channelsValues.append(CALChannel[channel])
-        self.channelsValues = np.asarray(self.channelsValues)
+            self.channelsValues = np.asarray(self.channelsValues)
+#edit by songmingming htht  2019/03/03
+          
