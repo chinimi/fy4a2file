@@ -70,6 +70,14 @@ class FY4A_H5(object):
             #暂时处理
             channel[channel == 65534] = 4095
             channel[channel == 65535] = 4095
+#edit by songmingming htht 2019/03/03
+#            channel[channel == 65534] = 4096
+#             channel[channel == 65535] = 4096
+#             CALChannel = self.h5file[CALChannelname].value  # 定标表
+#             CALChannel = np.append(CALChannel, 65535) 
+#             self.channelsValues.append(CALChannel[channel])
+#             self.channelsValues = np.asarray(self.channelsValues)
+#edit by songmingming htht  2019/03/03
             CALChannel = self.h5file[CALChannelname].value  # 定标表
             # self.channels[channelname] = CALChannel[channel]  # 缺测值
             self.channelsValues.append(CALChannel[channel])
